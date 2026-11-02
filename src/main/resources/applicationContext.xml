@@ -3,4 +3,15 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+    <bean id="bookRepository" class="ir.maktabsharif.repository.BookRepository"/>
+    <bean id="authorRepository" class="ir.maktabsharif.repository.AuthorRepository"/>
+
+    <bean id="bookService" class="ir.maktabsharif.service.BookService">
+        <constructor-arg ref="bookRepository"/>
+        <property name="libraryName" value="Campus Central Library"/>
+    </bean>
+    <bean id="authorService" class="ir.maktabsharif.service.AuthorService">
+        <constructor-arg ref="authorRepository"/>
+    </bean>
+
 </beans>

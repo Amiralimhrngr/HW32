@@ -3,4 +3,42 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+    <import resource="classpath:applicationContext.xml"/>
+
+    <bean id="bookListController" class="ir.maktabsharif.controller.BookListController">
+        <constructor-arg ref="bookService"/>
+        <constructor-arg ref="authorService"/>
+    </bean>
+
+    <bean id="bookDetailController" class="ir.maktabsharif.controller.BookDetailController">
+        <constructor-arg ref="bookService"/>
+        <constructor-arg ref="authorService"/>
+    </bean>
+
+    <bean id="addBookController" class="ir.maktabsharif.controller.AddBookController">
+        <constructor-arg ref="bookService"/>
+        <constructor-arg ref="authorService"/>
+    </bean>
+
+    <bean id="authorListController" class="ir.maktabsharif.controller.AuthorListController">
+        <constructor-arg ref="authorService"/>
+    </bean>
+
+    <bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="urlMap">
+
+            <map>
+                <entry key="/books" value-ref="bookListController"/>
+                <entry key="/books/detail" value-ref="bookDetailController"/>
+                <entry key="/books/add" value-ref="addBookController"/>
+                <entry key="/authors" value-ref="authorListController"/>
+            </map>
+        </property>
+    </bean>
+
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/views/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
 </beans>

@@ -1,5 +1,28 @@
-### GET request to example server
-GET https://examples.http-client.intellij.net/get
-    ?generated-in=IntelliJ IDEA
+### List all books
+GET http://localhost:8080/HW32_war_exploded/books
 
-###
+<> 2026-11-02T183440.200.html
+
+### Get a specific book
+GET http://localhost:8080/HW32_war_exploded/books/detail?id=1
+
+<> 2026-11-02T184554.200.html
+
+### Show add book form
+GET http://localhost:8080/HW32_war_exploded/books/add
+
+<> 2026-11-02T184614.200.html
+
+
+### Add a new book
+POST http://localhost:8080/HW32_war_exploded/books/add
+Content-Type: application/x-www-form-urlencoded
+
+title=Spring+in+Action&pages=520&authorId=1
+
+<> 2026-11-02T190103.200.html
+
+### List all authors
+GET http://localhost:8080/HW32_war_exploded/authors
+
+<> 2026-11-02T190213.200.html
